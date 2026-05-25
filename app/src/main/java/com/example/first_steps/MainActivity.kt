@@ -12,8 +12,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
-
         val button1 = findViewById<Button>(R.id.button1)
         button1.setOnClickListener {
             Toast.makeText(this, "Hola desde Ventana 1", Toast.LENGTH_SHORT).show()
