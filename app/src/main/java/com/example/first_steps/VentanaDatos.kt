@@ -15,7 +15,6 @@ class VentanaDatos : ComponentActivity(), CoroutineScope by MainScope() {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    // Ahora 'api' ya no marcará error porque ApiService existe
     private val api = retrofit.create(ApiService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +30,6 @@ class VentanaDatos : ComponentActivity(), CoroutineScope by MainScope() {
                 try {
                     val lista = api.obtenerDatos()
                     if (lista.isNotEmpty()) {
-                        // Mostramos solo el ID y Fecha del primer registro como ejemplo
                         val ultimo = lista.last()
                         tvResultado.text =
                             "Último Registro:\nID: ${ultimo.id}\nFecha: ${ultimo.fecha ?: "Sin fecha"}"
@@ -47,8 +45,7 @@ class VentanaDatos : ComponentActivity(), CoroutineScope by MainScope() {
         btnPost.setOnClickListener {
             launch {
                 try {
-                    // Al enviar un POST, el ID suele ser autogenerado por la DB
-                    // y la fecha la suele poner el servidor.
+
                     val nuevoDato = MiDato()
                     val respuesta = api.enviarDato(nuevoDato)
 
