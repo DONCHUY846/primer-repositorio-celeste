@@ -40,9 +40,10 @@ class MainActivity : ComponentActivity(),
             startActivity(intent)
         }
 
-
-        button1.setOnClickListener {
-            enviarMensajeACelular("Hola Celular!")
+        val btnBaseDatos = findViewById<Button>(R.id.buttonDatos)
+        btnBaseDatos.setOnClickListener {
+             val intent = Intent(this, VentanaDatos::class.java)
+            startActivity(intent)
         }
     }
 
